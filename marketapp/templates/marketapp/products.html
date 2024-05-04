@@ -1,0 +1,21 @@
+{% extends "marketapp/base.html" %}
+
+{% block title %}Products{% endblock %}
+
+{% block content %}
+<h2>Список товаров</h2>
+{% if products %}
+<ul>
+    {% for product in products %}
+    <li>
+        <h3>{{ product.name }}</h3>
+        <p>{{ product.description }}</p>
+        <p>Цена: {{ product.price }}</p>
+        <p>Доступно: {{ product.quantity }} шт</p>
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>Доступных товаров нет</p>
+{% endif %}
+{% endblock %}

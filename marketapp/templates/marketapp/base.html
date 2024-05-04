@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Market{% endblock %}</title>
+</head>
+<body>
+    <header>
+        <h2>Домашняя работа 6</h2>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">Главная</a></li>
+                <li><a href="{% url 'about' %}">About Us</a></li>
+                <li><a href="{% url 'products' %}">Products</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        {% block content %}
+        Главная страница
+        {% endblock %}
+    </main>
+</body>
+</html>
