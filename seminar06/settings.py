@@ -87,15 +87,15 @@ WSGI_APPLICATION = 'seminar06.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'moiseev$default',
-        'USER': 'moiseev',
-        'PASSWORD': os.getenv('MYSQL_PASSWORD'),
-        'HOST': 'moiseev.mysql.pythonanywhere-services.com',
-        'OPTIONS': {
-            'init_command': "SET NAMES 'utf8mb4';SET sql_mode='STRICT_TRANS_TABLES'",
-            'charset': 'utf8mb4',
+    "default": {
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": "moiseev$default",
+        "USER": "moiseev",
+        "PASSWORD": os.getenv("MYSQL_PASSWORD"),
+        "HOST": "moiseev.mysql.pythonanywhere-services.com",
+        "OPTIONS": {
+            "init_command": "SET NAMES 'utf8mb4';SET sql_mode='STRICT_TRANS_TABLES'",
+            "charset": "utf8mb4",
         },
     }
 }
@@ -145,3 +145,33 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "formatters": {
+        "verbose": {
+            "format": "{levelname} {asctime} {module} {process} {thread} {message}",
+            "style": "{",
+        },
+        "simple": {"format": "%(levelname)s %(message)s"},
+    },
+    "loggers": {
+        "django": {
+            "handlers": ["console"],
+            "level": "INFO",
+        },
+        "myapp": {
+            "handlers": ["console"],
+            "level": "DEBUG",
+            "Propagate": True,
+        },
+    },
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+            "formatter": "verbose",
+        },
+    },
+}
